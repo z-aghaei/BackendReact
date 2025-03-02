@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using YourApp.Infrastructure.Persistence;
 
 namespace Infrastructure
 {
@@ -24,6 +25,15 @@ namespace Infrastructure
                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
              };
         });
+            return services;
+        }
+        public static IServiceCollection AddSQLDB(this IServiceCollection services, IConfiguration configuration)
+        {
+
+            var options = configuration.GetConnectionString("DataBaseConnectionString");
+            services.AddDbContext<AppDbContext>(ctx =>
+            ctx.UseSqlServer(options.ConnectionString));
+           
             return services;
         }
     }
