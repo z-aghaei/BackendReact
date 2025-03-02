@@ -1,4 +1,5 @@
 
+using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
@@ -23,25 +24,9 @@ using Infrastructure;
     });
 
 
- builder.Services.AddInfrastructure();
+    builder.Services.AddInfrastructure();
 
-
-
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//            .AddJwtBearer(options =>
-//            {
-//                options.TokenValidationParameters = new TokenValidationParameters
-//                {
-//                    ValidateIssuer = true,
-//                    ValidateAudience = true,
-//                    ValidateLifetime = true,
-//                    ValidateIssuerSigningKey = true,
-//                    ValidIssuer = "http://localhost:44319",
-//                    ValidAudience = "http://localhost:44319",
-//                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
-//                };
-//            });
-
+ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddControllers();
