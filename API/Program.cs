@@ -1,26 +1,26 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
+//using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
 
 void ConfigureServices(IServiceCollection services)
 {
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = "yourIssuer",
-                ValidAudience = "yourAudience",
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key"))
-            };
-        });
+    //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    //    .AddJwtBearer(options =>
+    //    {
+    //        options.TokenValidationParameters = new TokenValidationParameters
+    //        {
+    //            ValidateIssuer = true,
+    //            ValidateAudience = true,
+    //            ValidateLifetime = true,
+    //            ValidateIssuerSigningKey = true,
+    //            ValidIssuer = "yourIssuer",
+    //            ValidAudience = "yourAudience",
+    //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key"))
+    //        };
+    //    });
 
 
     var builder = WebApplication.CreateBuilder(args);
