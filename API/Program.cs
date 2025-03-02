@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Options;
+using Infrastructure;
+    
 
     var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +23,24 @@ using System.Text;
     });
 
 
-    builder.Services.AddInfrastructure();
-    
+ builder.Services.AddInfrastructure();
+
+
+
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//            .AddJwtBearer(options =>
+//            {
+//                options.TokenValidationParameters = new TokenValidationParameters
+//                {
+//                    ValidateIssuer = true,
+//                    ValidateAudience = true,
+//                    ValidateLifetime = true,
+//                    ValidateIssuerSigningKey = true,
+//                    ValidIssuer = "http://localhost:44319",
+//                    ValidAudience = "http://localhost:44319",
+//                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
+//                };
+//            });
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using YourApp.Infrastructure.Persistence;
-
 namespace Infrastructure
 {
     public static class Extensions
@@ -16,14 +15,14 @@ namespace Infrastructure
         {
             options.TokenValidationParameters = new TokenValidationParameters
             {
-               ValidateIssuer = true,
-               ValidateAudience = true,
-               ValidateLifetime = true,
-               ValidateIssuerSigningKey = true,
-               ValidIssuer = "http://localhost:44319",
-               ValidAudience = "http://localhost:44319",
-               IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
-             };
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "http://localhost:44319",
+                ValidAudience = "http://localhost:44319",
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
+            };
         });
             return services;
         }
@@ -33,7 +32,7 @@ namespace Infrastructure
             var options = configuration.GetConnectionString("DataBaseConnectionString");
             services.AddDbContext<AppDbContext>(ctx =>
             ctx.UseSqlServer(options.ConnectionString));
-           
+
             return services;
         }
     }
