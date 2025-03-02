@@ -20,5 +20,12 @@ namespace Domain
         public DateTime CreateDateTime { get; set; }
 
         public int CreateUserId { get; set; }
+        public int UpdateUserId { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
+
+        public int DeleteUserId { get; set; }
+        public DateTime DeleteUserDate { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }
