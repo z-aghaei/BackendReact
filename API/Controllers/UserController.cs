@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,10 +8,13 @@ namespace API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpPost]
-        public int Create(Domain.User user)
+        protected IMediator Mediator;
+
+       [HttpPost]
+        public async Task<int> Create(Application.User.CreateUserCommand user,CancellationToken cancellationToken)
         {
-            return 1;
+            var result=await Mediator.Send(user);
+            return result;
         }
     }
 }
