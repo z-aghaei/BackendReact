@@ -15,6 +15,8 @@ namespace Domain
         public string Email { get; set; }
         public string Name { get; set; }
 
-        public string Family { get; set; }
+        public string LastName { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreateDateTime { get; set; }
     }
 }
