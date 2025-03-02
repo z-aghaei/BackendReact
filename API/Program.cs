@@ -1,4 +1,5 @@
 
+using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
@@ -20,8 +21,8 @@ using System.Text;
 
 
     builder.Services.AddInfrastructure();
-    
 
+ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddControllers();
