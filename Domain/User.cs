@@ -18,5 +18,7 @@ namespace Domain
         public string LastName { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreateDateTime { get; set; }
+
+        public int CreateUserId { get; set; }
     }
 }
