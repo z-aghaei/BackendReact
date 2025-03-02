@@ -11,7 +11,11 @@ namespace Application.User
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
     {
-        private IRepository<Domain.User> repository;
+        private IRepositoryUser _repository;
+        public CreateUserCommandHandler(IRepositoryUser repository)
+        {
+            _repository = repository;
+        }
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var user = new Domain.User
@@ -25,8 +29,8 @@ namespace Application.User
                 IsActive=request.IsActive
                
             };
-            repository.Add(user);
-            await repository.SaveChangesAsync(cancellationToken);
+            _repository.Add(user);
+            await _repository.SaveChangesAsync(cancellationToken);
             return user.Id;
         }
     }
