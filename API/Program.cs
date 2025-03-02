@@ -22,7 +22,11 @@ using System.Text;
 
     builder.Services.AddInfrastructure();
 
-ConfigurationManager configuration = builder.Configuration;
+   ConfigurationManager configuration = builder.Configuration;
+
+    builder.Services.AddDbContext<AppDbContext>(ctx =>
+    ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddControllers();
