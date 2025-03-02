@@ -6,9 +6,9 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : BaseController
     {
-        protected IMediator Mediator;
+      
 
        [HttpPost]
         public async Task<int> Create(Application.User.CreateUserCommand user,CancellationToken cancellationToken)
@@ -16,5 +16,7 @@ namespace API.Controllers
             var result=await Mediator.Send(user);
             return result;
         }
+
+
     }
 }
