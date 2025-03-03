@@ -8,7 +8,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 using Infrastructure;
-    
+using Microsoft.Extensions.DependencyInjection;
+using MediatR;
 
     var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,7 @@ using Infrastructure;
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
 
 builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -8,11 +8,15 @@ namespace API.Controllers
     [ApiController]
     public class UserController : BaseController
     {
-      
 
-       [HttpPost]
+        public UserController(IMediator mediator):base(mediator)
+        {
+            
+        }
+        [HttpPost]
         public async Task<int> Create(Application.User.CreateUserCommand user,CancellationToken cancellationToken)
         {
+            
             var result=await Mediator.Send(user);
             return result;
         }
