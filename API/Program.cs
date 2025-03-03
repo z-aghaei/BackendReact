@@ -1,5 +1,7 @@
 
+using Domain.Repositories;
 using Infrastructure;
+using Infrastructure.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
@@ -35,6 +37,7 @@ builder.Services.AddInfrastructure();
 
     builder.Services.AddDbContext<AppDbContext>(ctx =>
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddScoped<IRepositoryUser, UserRepository>();
 
 
 
