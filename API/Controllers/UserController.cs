@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.User;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,12 @@ namespace API.Controllers
             return result;
         }
 
-
+        [HttpGet]
+        public async Task<List<Application.User.UserDto>> Get( CancellationToken cancellationToken)
+        {
+            var query = new GetUserListQuery();
+            var result = await Mediator.Send(query);
+            return result;
+        }
     }
 }

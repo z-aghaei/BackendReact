@@ -36,12 +36,14 @@ namespace Infrastructure.EF
 
         public async Task<List<User>> GetAll()
         {
-           return await _appDbContext.Users.Where(item=>item.IsDeleted==false).AsNoTracking().ToListAsync();
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false).ToListAsync();
         }
 
         public async Task<User> GetById(int id)
         {
-            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id==id).FirstOrDefaultAsync();
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id). FirstOrDefaultAsync();
+                
+                
         }
     }
 }

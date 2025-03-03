@@ -35,8 +35,9 @@ using Application.User;
 //builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateUserCommandHandler).Assembly));
 builder.Services.AddInfrastructure();
+builder.Services.AddAutoMapper(typeof(Application.MappingProfile));
 
-   ConfigurationManager configuration = builder.Configuration;
+ConfigurationManager configuration = builder.Configuration;
 
     builder.Services.AddDbContext<AppDbContext>(ctx =>
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
