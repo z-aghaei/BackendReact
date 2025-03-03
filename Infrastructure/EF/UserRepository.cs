@@ -26,7 +26,9 @@ namespace Infrastructure.EF
             {
                 await _appDbContext.SaveChangesAsync(cancellationToken);
             }
-            catch(Exception ex) { }
+            catch(Exception ex) 
+            { 
+            }
            
              //_user.AddAsync(user);
         }

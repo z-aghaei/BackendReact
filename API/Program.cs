@@ -41,10 +41,7 @@ builder.Services.AddInfrastructure();
     builder.Services.AddDbContext<AppDbContext>(ctx =>
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-  builder.Services.AddScoped<IRepositoryUser, UserRepository>();
-
-
-  
+ builder.Services.AddScoped<IRepositoryUser, UserRepository>();
 
 builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories
 {
-    public interface IRepositoryUser//:IRepository<User>
+    public interface IRepositoryUser
     {
         Task AddAsync(User user, CancellationToken cancellationToken);
     }
