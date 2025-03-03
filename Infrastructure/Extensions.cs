@@ -26,14 +26,6 @@ namespace Infrastructure
         });
             return services;
         }
-        public static IServiceCollection AddSQLDB(this IServiceCollection services, IConfiguration configuration)
-        {
-
-            var options = configuration.GetConnectionString("DataBaseConnectionString");
-            services.AddDbContext<AppDbContext>(ctx =>
-            ctx.UseSqlServer(options.ConnectionString));
-
-            return services;
-        }
+        
     }
 }
