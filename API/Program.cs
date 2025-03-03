@@ -24,7 +24,7 @@ using Infrastructure;
     });
 
 
-    builder.Services.AddInfrastructure();
+   builder.Services.AddInfrastructure();
 
    ConfigurationManager configuration = builder.Configuration;
 
