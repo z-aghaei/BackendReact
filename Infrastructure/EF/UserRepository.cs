@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,16 @@ namespace Infrastructure.EF
             }
            
              //_user.AddAsync(user);
+        }
+
+        public async Task<List<User>> GetAll()
+        {
+           return await _appDbContext.Users.Where(item=>item.IsDeleted==false).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<User> GetById(int id)
+        {
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id==id).FirstOrDefaultAsync();
         }
     }
 }
