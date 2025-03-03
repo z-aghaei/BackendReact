@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.EF
 {
-    public class UserRepository :IRepositoryUser
+    public class UserRepository : IRepositoryUser
     {
-     //private readonly DbSet<User> _user;
-     private readonly AppDbContext _appDbContext;
+        //private readonly DbSet<User> _user;
+        private readonly AppDbContext _appDbContext;
 
-        public UserRepository(AppDbContext dbContext) {
-           // _user = dbContext.Users;
+        public UserRepository(AppDbContext dbContext)
+        {
+            // _user = dbContext.Users;
             _appDbContext = dbContext;
         }
         public async Task AddAsync(User user, CancellationToken cancellationToken)
@@ -27,17 +28,16 @@ namespace Infrastructure.EF
             {
                 await _appDbContext.SaveChangesAsync(cancellationToken);
             }
-            catch(Exception ex) 
-            { 
+            catch (Exception ex)
+            {
             }
-           
-             //_user.AddAsync(user);
+
+            //_user.AddAsync(user);
         }
-<<<<<<< HEAD
         public async Task<User> GetAsync(string username, CancellationToken cancellationToken)
         {
             return await _appDbContext.Users.FirstOrDefaultAsync(user => user.UserName.Equals(username));
-=======
+        }
 
         public async Task<List<User>> GetAll()
         {
@@ -46,10 +46,10 @@ namespace Infrastructure.EF
 
         public async Task<User> GetById(int id)
         {
-            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id). FirstOrDefaultAsync();
-                
-                
->>>>>>> 008eb571bfff30e19b30841eccf99a54498042e4
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id).FirstOrDefaultAsync();
+
+
         }
+
     }
 }
