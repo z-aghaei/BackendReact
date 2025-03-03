@@ -25,6 +25,13 @@ namespace API.Controllers
             return result;
         }
 
+        [HttpGet]
+        public async Task<List<Application.User.UserDto>> Get( CancellationToken cancellationToken)
+        {
+            var query = new GetUserListQuery();
+            var result = await Mediator.Send(query);
+            return result;
+        }
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginModel query)

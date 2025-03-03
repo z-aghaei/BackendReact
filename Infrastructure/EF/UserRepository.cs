@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,13 +27,29 @@ namespace Infrastructure.EF
             {
                 await _appDbContext.SaveChangesAsync(cancellationToken);
             }
-            catch(Exception ex) { }
+            catch(Exception ex) 
+            { 
+            }
            
              //_user.AddAsync(user);
         }
+<<<<<<< HEAD
         public async Task<User> GetAsync(string username, CancellationToken cancellationToken)
         {
             return await _appDbContext.Users.FirstOrDefaultAsync(user => user.UserName.Equals(username));
+=======
+
+        public async Task<List<User>> GetAll()
+        {
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false).ToListAsync();
+        }
+
+        public async Task<User> GetById(int id)
+        {
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id). FirstOrDefaultAsync();
+                
+                
+>>>>>>> 008eb571bfff30e19b30841eccf99a54498042e4
         }
     }
 }
