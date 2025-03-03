@@ -15,17 +15,17 @@ namespace Infrastructure
         {
             options.TokenValidationParameters = new TokenValidationParameters
             {
-               ValidateIssuer = true,
-               ValidateAudience = true,
-               ValidateLifetime = true,
-               ValidateIssuerSigningKey = true,
-               ValidIssuer = "http://localhost:44319",
-               ValidAudience = "http://localhost:44319",
-               IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
-             };
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "http://localhost:44319",
+                ValidAudience = "http://localhost:44319",
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
+            };
         });
             return services;
         }
-        
+
     }
 }

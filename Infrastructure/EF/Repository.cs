@@ -9,7 +9,12 @@ namespace Infrastructure.EF
 {
     public class Repository<T> : Domain.Repositories.IRepository<T> where T : class
     {
-        private DbContext _dbContext;
+        private AppDbContext _dbContext;
+
+        public Repository(AppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public void Add(T entity)
         {
             _dbContext.Add(entity);

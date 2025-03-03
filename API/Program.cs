@@ -7,6 +7,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Options;
+using Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
+using MediatR;
 
     var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +28,7 @@ using System.Text;
     });
 
 
-    builder.Services.AddInfrastructure();
+   builder.Services.AddInfrastructure();
 
    ConfigurationManager configuration = builder.Configuration;
 
@@ -32,6 +37,7 @@ using System.Text;
     builder.Services.AddScoped<IRepositoryUser, UserRepository>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
 
 builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -28,6 +28,6 @@ namespace Domain
         public DateTime? DeleteUserDate { get; set; }
         public bool IsDeleted { get; set; } = false;
 
-       
+        public bool IsAdmin { get; set; }
     }
 }

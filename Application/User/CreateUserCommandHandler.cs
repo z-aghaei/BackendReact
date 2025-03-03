@@ -26,7 +26,8 @@ namespace Application.User
                 LastName = request.LastName,
                 Email = request.Email,
                 IsDeleted = false,
-                IsActive=request.IsActive
+                IsActive=request.IsActive,
+                IsAdmin=request.IsAdmin
                
             };
             await _repository.AddAsync(user,cancellationToken);
