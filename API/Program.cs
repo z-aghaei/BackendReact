@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
+using Application.User;
 
     var builder = WebApplication.CreateBuilder(args);
 
@@ -29,17 +30,21 @@ using MediatR;
 
 
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
+//builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateUserCommandHandler).Assembly));
 builder.Services.AddInfrastructure();
 
    ConfigurationManager configuration = builder.Configuration;
 
     builder.Services.AddDbContext<AppDbContext>(ctx =>
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-    builder.Services.AddScoped<IRepositoryUser, UserRepository>();
+
+  builder.Services.AddScoped<IRepositoryUser, UserRepository>();
 
 
+  
 
 builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

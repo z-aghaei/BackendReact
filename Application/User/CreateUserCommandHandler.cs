@@ -30,6 +30,8 @@ namespace Application.User
                 IsAdmin=request.IsAdmin
                
             };
+            // _repository.Add(user);
+            //await _repository.SaveChangesAsync(cancellationToken);
             await _repository.AddAsync(user,cancellationToken);
             return user.Id;
         }
