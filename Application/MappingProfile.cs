@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.DTO;
 using AutoMapper;
 namespace Application
 {
@@ -10,8 +11,8 @@ namespace Application
     {
         public MappingProfile()
         {
-            CreateMap<Domain.User, User.UserDto>();
-            CreateMap<User.UserDto, Domain.User>();
+            CreateMap<Domain.User, UserDto>();
+            CreateMap<UserDto, Domain.User>();
         }
     }
 }
