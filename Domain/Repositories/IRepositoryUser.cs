@@ -9,5 +9,6 @@ namespace Domain.Repositories
     public interface IRepositoryUser//:IRepository<User>
     {
         Task AddAsync(User user, CancellationToken cancellationToken);
+        Task<User> GetAsync(string username, CancellationToken cancellationToken);
     }
 }

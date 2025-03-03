@@ -21,7 +21,7 @@ namespace Infrastructure
                 ValidateIssuerSigningKey = true,
                 ValidIssuer = "http://localhost:44319",
                 ValidAudience = "http://localhost:44319",
-                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("123456"))
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("1fcd634c574a8cd88e64ddfa2d64535f"))
             };
         });
             return services;
