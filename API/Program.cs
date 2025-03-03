@@ -1,5 +1,7 @@
 
+using Domain.Repositories;
 using Infrastructure;
+using Infrastructure.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
@@ -27,6 +29,7 @@ using System.Text;
 
     builder.Services.AddDbContext<AppDbContext>(ctx =>
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddScoped<IRepositoryUser, UserRepository>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
