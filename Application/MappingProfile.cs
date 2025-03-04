@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.DTO;
+using Application.User;
 using AutoMapper;
 namespace Application
 {
@@ -13,6 +14,7 @@ namespace Application
         {
             CreateMap<Domain.User, UserDto>();
             CreateMap<UserDto, Domain.User>();
+            CreateMap<UpdateUserCommand, Domain.User>();
         }
     }
 }

@@ -13,11 +13,11 @@ namespace Infrastructure.EF
 {
     public class UserRepository :IRepositoryUser
     {
-     //private readonly DbSet<User> _user;
+  
      private readonly AppDbContext _appDbContext;
 
         public UserRepository(AppDbContext dbContext) {
-           // _user = dbContext.Users;
+         
             _appDbContext = dbContext;
         }
         public async Task AddAsync(User user, CancellationToken cancellationToken)
@@ -31,12 +31,12 @@ namespace Infrastructure.EF
             { 
             }
            
-             //_user.AddAsync(user);
+           
         }
 
-        public async Task<User> GetAsync(string username, CancellationToken cancellationToken)
+        public async Task<User> GetAsync(string username,string password, CancellationToken cancellationToken)
         {
-            return await _appDbContext.Users.FirstOrDefaultAsync(user => user.UserName.Equals(username));
+            return await _appDbContext.Users.FirstOrDefaultAsync(user => user.UserName.Equals(username) & user.PasswordHash.Equals(password));
         }
 
         public async Task<List<User>> GetAll()
@@ -46,10 +46,38 @@ namespace Infrastructure.EF
 
         public async Task<User> GetById(int id)
         {
-            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id). FirstOrDefaultAsync();
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id).AsNoTracking(). FirstOrDefaultAsync();
                 
                 
 
+        }
+
+        public async Task UpdateAsync(User entity, CancellationToken cancellationToken)
+        {
+            try
+            {
+                _appDbContext.Update(entity);
+                await _appDbContext.SaveChangesAsync();
+            }
+            catch(Exception)
+            {
+
+            }
+         
+        }
+
+        public async Task DeleteAsync(User entity, CancellationToken cancellationToken)
+        {
+            try
+            {
+                entity.IsDeleted= true;
+                _appDbContext.Update(entity);
+                await _appDbContext.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

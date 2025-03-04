@@ -13,6 +13,7 @@ using Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using Application.User;
+using API.Middleware;
 
     var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,12 @@ ConfigurationManager configuration = builder.Configuration;
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
  builder.Services.AddScoped<IRepositoryUser, UserRepository>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin")); // Example policy for admin role
+    options.AddPolicy("UserPolicy", policy => policy.RequireRole("User"));   // Example policy for user role
+});
 
 builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -93,6 +100,10 @@ var app = builder.Build();
 
 
     app.UseHttpsRedirection();
+
+    app.UseAuthentication();
+
+   /// app.UseMiddleware<RoleAuthorizationMiddleware>();  // Add this middleware
 
     app.UseAuthorization();
 

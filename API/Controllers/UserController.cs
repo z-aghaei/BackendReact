@@ -19,19 +19,24 @@ namespace API.Controllers
             
         }
         [HttpPost]
-        public async Task<int> Create(CreateUserCommand user,CancellationToken cancellationToken)
+        //[AllowAnonymous]
+        [Authorize(Policy ="AdminPolicy")]
+        public async Task<IActionResult> Create(CreateUserCommand user,CancellationToken cancellationToken)
         {
             
             var result=await Mediator.Send(user);
-            return result;
+            return Ok(new { result });
         }
 
         [HttpGet]
-        public async Task<List<UserDto>> Get( CancellationToken cancellationToken)
+        //[Authorize(Roles ="Admin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Get( CancellationToken cancellationToken)
         {
             var query = new GetUserListQuery();
+            
             var result = await Mediator.Send(query);
-            return result;
+            return Ok(result );
         }
         [AllowAnonymous]
         [HttpPost("login")]
@@ -43,6 +48,26 @@ namespace API.Controllers
                 Password = query.Password
             });
             return Ok(new { Token = result });
+        }
+
+       // [Authorize("Admin")]
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<IActionResult> Update(UpdateUserCommand user, CancellationToken cancellationToken)
+        {
+
+            await Mediator.Send(user);
+            return Ok();
+        }
+
+        [HttpDelete]
+       // [Authorize("Admin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete(DeleteUserCommand user, CancellationToken cancellationToken)
+        {
+
+            await Mediator.Send(user);
+            return Ok();
         }
     }
 }

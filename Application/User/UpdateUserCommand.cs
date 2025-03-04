@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Application.User
 {
-    public sealed record CreateUserCommand(string UserName, string Password, string Name, string LastName, string Email,bool IsActive,bool IsAdmin):IRequest<int>;
-   
+    public sealed record UpdateUserCommand(int id,string UserName,  string Name, string LastName, string Email, bool IsActive, bool IsAdmin) : IRequest;
 
 }
