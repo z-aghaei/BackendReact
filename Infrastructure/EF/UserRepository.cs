@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.EF
 {
-    public class UserRepository :IRepositoryUser
+    public class UserRepository : IRepositoryUser
     {
   
      private readonly AppDbContext _appDbContext;
@@ -27,8 +27,8 @@ namespace Infrastructure.EF
             {
                 await _appDbContext.SaveChangesAsync(cancellationToken);
             }
-            catch(Exception ex) 
-            { 
+            catch (Exception ex)
+            {
             }
            
            
