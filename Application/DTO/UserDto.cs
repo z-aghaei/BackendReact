@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.User
+namespace Application.DTO
 {
-   // public  class UserDto(int Id, string UserName, string Password, string Name, string LastName, string Email, bool IsActive, bool IsAdmin);
+    // public  class UserDto(int Id, string UserName, string Password, string Name, string LastName, string Email, bool IsActive, bool IsAdmin);
     public class UserDto
     {
         public UserDto()
         {
-          
+
         }
 
         public int Id { get; set; }
@@ -21,7 +21,7 @@ namespace Application.User
         public string UserName { get; set; }
         public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public bool IsAdmin { get; set;}
+        public bool IsAdmin { get; set; }
 
 
     }

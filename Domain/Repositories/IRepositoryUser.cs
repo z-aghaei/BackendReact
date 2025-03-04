@@ -17,5 +17,6 @@ namespace Domain.Repositories
 
         Task<List<User>> GetAll();
 
+>>>>>>> 008eb571bfff30e19b30841eccf99a54498042e4
     }
 }

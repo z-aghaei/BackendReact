@@ -34,6 +34,7 @@ namespace Infrastructure.EF
 
             //_user.AddAsync(user);
         }
+<<<<<<< HEAD
         public async Task<User> GetAsync(string username, CancellationToken cancellationToken)
         {
             return await _appDbContext.Users.FirstOrDefaultAsync(user => user.UserName.Equals(username));
@@ -46,8 +47,9 @@ namespace Infrastructure.EF
 
         public async Task<User> GetById(int id)
         {
-            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id).FirstOrDefaultAsync();
-
+            return await _appDbContext.Users.Where(item => item.IsDeleted == false && item.Id == id). FirstOrDefaultAsync();
+                
+                
 
         }
 

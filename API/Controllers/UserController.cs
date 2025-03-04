@@ -1,4 +1,5 @@
-﻿using Application.User;
+﻿using Application.DTO;
+using Application.User;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Application.User.UserDto>> Get( CancellationToken cancellationToken)
+        public async Task<List<UserDto>> Get( CancellationToken cancellationToken)
         {
             var query = new GetUserListQuery();
             var result = await Mediator.Send(query);
