@@ -34,7 +34,7 @@ namespace Infrastructure.EF
 
             //_user.AddAsync(user);
         }
-<<<<<<< HEAD
+
         public async Task<User> GetAsync(string username, CancellationToken cancellationToken)
         {
             return await _appDbContext.Users.FirstOrDefaultAsync(user => user.UserName.Equals(username));
