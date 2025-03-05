@@ -27,8 +27,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles ="Admin")]
-        [AllowAnonymous]
+        // [Authorize(Policy = "AdminPolicy")]
+        // [AllowAnonymous]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<IActionResult> Get( CancellationToken cancellationToken)
         {
             var query = new GetUserListQuery();
@@ -48,9 +49,9 @@ namespace API.Controllers
             return Ok(new { Token = result });
         }
 
-       // [Authorize("Admin")]
+        [Authorize(Policy ="AdminPolicy")]
         [HttpPut]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> Update(UpdateUserCommand user, CancellationToken cancellationToken)
         {
 
@@ -59,8 +60,8 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-       // [Authorize("Admin")]
-        [AllowAnonymous]
+        [Authorize(Policy = "AdminPolicy")]
+        //[AllowAnonymous]
         public async Task<IActionResult> Delete(DeleteUserCommand user, CancellationToken cancellationToken)
         {
 

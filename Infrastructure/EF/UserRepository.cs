@@ -11,12 +11,13 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.EF
 {
-    public class UserRepository : IRepositoryUser
+    public class UserRepository :Repository<User>, IRepositoryUser
     {
   
      private readonly AppDbContext _appDbContext;
 
-        public UserRepository(AppDbContext dbContext) {
+        public UserRepository(AppDbContext dbContext):base(dbContext)
+        {
          
             _appDbContext = dbContext;
         }

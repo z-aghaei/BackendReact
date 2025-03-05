@@ -43,7 +43,8 @@ ConfigurationManager configuration = builder.Configuration;
     builder.Services.AddDbContext<AppDbContext>(ctx =>
     ctx.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
- builder.Services.AddScoped<IRepositoryUser, UserRepository>();
+builder.Services.AddScoped<IRepositoryUser, UserRepository>();
+builder.Services.AddScoped(typeof(IRepository<>),typeof( Repository<>));
 
 builder.Services.AddAuthorization(options =>
 {
